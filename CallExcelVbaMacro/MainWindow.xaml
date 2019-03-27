@@ -1,0 +1,87 @@
+﻿<Window x:Class="CallExcelVbaMacro.MainWindow"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CallExcelVbaMacro"
+        mc:Ignorable="d"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal" 
+        TextOptions.TextRenderingMode="Auto"        
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        DataContext="{StaticResource MainWindowViewModel}"
+        ResizeMode="NoResize"
+        Title="ExcelVbaCaller" Height="312.2" Width="680.667">
+    <Grid>
+        <!--<Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="4*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>-->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <!--<Label Content="Fichier Excel" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Right" Margin="10,10,0,0" VerticalAlignment="Top"/>-->
+        <TextBox Grid.Column="0" Grid.Row="0"
+            materialDesign:HintAssist.Hint="Fichier Excel"
+            Text="{Binding SelectedPath}"
+            Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+        <Button Name="SearchButton" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Right"
+            Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}"
+            ToolTip="MaterialDesignFloatingActionMiniDarkButton" Click="SearchButton_Click">
+            <materialDesign:PackIcon
+                Kind="FeatureSearch"
+                Height="24"
+                Width="24" />
+        </Button>
+
+        <!--<Label Content="Nom macro" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Right" Margin="10,10,0,0" VerticalAlignment="Top"/>-->
+        <TextBox Grid.Column="0" Grid.Row="1"
+                 materialDesign:HintAssist.Hint="Nom de la macro"
+                 Text="{Binding MacroName}"
+                 Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+
+        <TextBox Grid.Column="0" Grid.Row="2"
+                 materialDesign:HintAssist.Hint="Argument 1"
+                 Text="{Binding Argument1}"
+                 Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+        <Button Name="Argument1SearchButton" Grid.Column="0" Grid.Row="2" HorizontalAlignment="Right"
+                Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}"
+                ToolTip="MaterialDesignFloatingActionMiniDarkButton" Click="Argument1SearchButton_Click">
+            <materialDesign:PackIcon
+                Kind="FeatureSearch"
+                Height="24"
+                Width="24" />
+        </Button>
+
+        <TextBox Grid.Column="0" Grid.Row="3"
+                 materialDesign:HintAssist.Hint="Argument 2"
+                 Text="{Binding Argument2}"
+                 Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+        <Button Name="Argument2SearchButton" Grid.Column="0" Grid.Row="3" HorizontalAlignment="Right"
+                Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}"
+                ToolTip="MaterialDesignFloatingActionMiniDarkButton" Click="Argument2SearchButton_Click">
+            <materialDesign:PackIcon
+                Kind="FeatureSearch"
+                Height="24"
+                Width="24" />
+        </Button>
+
+        <Button Grid.Column="0" Grid.Row="4"
+            Style="{StaticResource MaterialDesignRaisedAccentButton}"
+            Width="150"
+            ToolTip="Resource name: MaterialDesignRaisedAccentButton"
+            Command="{Binding ExecuteCommand}"
+            materialDesign:RippleAssist.Feedback="#DD000000">
+            Executer
+        </Button>
+
+    </Grid>
+</Window>
