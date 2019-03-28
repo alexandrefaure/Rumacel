@@ -27,6 +27,7 @@
             <RowDefinition Height="*"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
         <!--<Label Content="Fichier Excel" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Right" Margin="10,10,0,0" VerticalAlignment="Top"/>-->
         <TextBox Grid.Column="0" Grid.Row="0"
@@ -74,7 +75,20 @@
                 Width="24" />
         </Button>
 
-        <Button Grid.Column="0" Grid.Row="4"
+        <TextBox Grid.Column="0" Grid.Row="4"
+                 materialDesign:HintAssist.Hint="Argument 3"
+                 Text="{Binding Argument3}"
+                 Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+        <Button Name="Argument3SearchButton" Grid.Column="0" Grid.Row="4" HorizontalAlignment="Right"
+                Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}"
+                ToolTip="MaterialDesignFloatingActionMiniDarkButton" Click="Argument3SearchButton_Click">
+            <materialDesign:PackIcon
+                Kind="FeatureSearch"
+                Height="24"
+                Width="24" />
+        </Button>
+
+        <Button Grid.Column="0" Grid.Row="5"
             Style="{StaticResource MaterialDesignRaisedAccentButton}"
             Width="150"
             ToolTip="Resource name: MaterialDesignRaisedAccentButton"

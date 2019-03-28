@@ -7,8 +7,8 @@ namespace CallExcelVbaMacro.ViewModels
     public class MainWindowViewModel : ViewModelBase
     {
         private string _argument1;
-
         private string _argument2;
+        private string _argument3;
         public ExcelService _excelService;
 
         private string _macroName;
@@ -21,12 +21,14 @@ namespace CallExcelVbaMacro.ViewModels
             SearchFileCommand = new RelayCommand<string>(SearchFileDialog, s => true);
             Argument1SearchFileCommand = new RelayCommand<string>(Argument1SearchFileDialog, s => true);
             Argument2SearchFileCommand = new RelayCommand<string>(Argument2SearchFileDialog, s => true);
+            Argument3SearchFileCommand = new RelayCommand<string>(Argument3SearchFileDialog, s => true);
             ExecuteCommand = new RelayCommand(ExecuteSearch, () => true);
         }
 
         public RelayCommand<string> SearchFileCommand { get; }
         public RelayCommand<string> Argument1SearchFileCommand { get; }
         public RelayCommand<string> Argument2SearchFileCommand { get; }
+        public RelayCommand<string> Argument3SearchFileCommand { get; }
         public RelayCommand ExecuteCommand { get; }
 
         public string SelectedPath
@@ -69,9 +71,19 @@ namespace CallExcelVbaMacro.ViewModels
             }
         }
 
+        public string Argument3
+        {
+            get => _argument3;
+            set
+            {
+                _argument3 = value;
+                RaisePropertyChanged(nameof(Argument3));
+            }
+        }
+
         private void ExecuteSearch()
         {
-            _excelService.RunMacro(SelectedPath, MacroName, Argument1, Argument2);
+            _excelService.RunMacro(SelectedPath, MacroName, Argument1, Argument2, Argument3);
         }
 
         private void SearchFileDialog(string fileName)
@@ -87,6 +99,11 @@ namespace CallExcelVbaMacro.ViewModels
         private void Argument2SearchFileDialog(string argument)
         {
             Argument2 = argument;
+        }
+
+        private void Argument3SearchFileDialog(string argument)
+        {
+            Argument3 = argument;
         }
     }
 }

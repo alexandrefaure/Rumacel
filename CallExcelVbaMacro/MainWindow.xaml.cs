@@ -35,6 +35,12 @@ namespace CallExcelVbaMacro
             OpenFileDialogAndExecuteCommand(ref viewModelSearchFileCommand);
         }
 
+        private void Argument3SearchButton_Click(object sender, RoutedEventArgs e)
+        {
+            var viewModelSearchFileCommand = viewModel?.Argument3SearchFileCommand;
+            OpenFileDialogAndExecuteCommand(ref viewModelSearchFileCommand);
+        }
+
         private void OpenFileDialogAndExecuteCommand<T>(ref T command) where T:RelayCommand<string>
         {
             var openFileDialog = new OpenFileDialog();

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Runtime.InteropServices;
 using Microsoft.Office.Interop.Excel;
 
 namespace CallExcelVbaMacro.Services
@@ -11,7 +12,8 @@ namespace CallExcelVbaMacro.Services
             Initialize();
         }
 
-        public void RunMacro(string selectedPath, string macroName, string argument1, string argument2)
+        public void RunMacro(string selectedPath, string macroName, string argument1, string argument2,
+            string argument3)
         {
             var application = new Application();
             Workbook xlWorkBook = null;
@@ -33,7 +35,7 @@ namespace CallExcelVbaMacro.Services
                 //macroArgument1 = "D:\\tests\\Dossiers de tests\\STD\\Longueil1\\Longueil1.xml";
                 //macroArgument2 = "True";
                 //macroName = "mGetXlsxFromXml";
-                application.Run(macroName, argument1, argument2);
+                application.Run(macroName, argument1, argument2, argument3);
                 //xlApp.Run("mGetXlsxFromXml", "D:\\tests\\Dossiers de tests\\STD\\Longueil1\\Longueil1.xml", "True");
             }
             catch (Exception e)
@@ -58,18 +60,18 @@ namespace CallExcelVbaMacro.Services
 
         private static void Initialize()
         {
-            var processes = Process.GetProcessesByName("EXCEL");
-            foreach (var process in processes)
-            {
-                process.Kill();
-            }
+            //var processes = Process.GetProcessesByName("EXCEL");
+            //foreach (var process in processes)
+            //{
+            //    process.Kill();
+            //}
         }
 
         private void ReleaseObject(object obj)
         {
             try
             {
-                System.Runtime.InteropServices.Marshal.ReleaseComObject(obj);
+                Marshal.ReleaseComObject(obj);
                 obj = null;
             }
             catch (Exception ex)
